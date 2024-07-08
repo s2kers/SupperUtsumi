@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!DOCTYPE html>
+<head>
+    <title>従業員登録</title>
+</head>
+<body>
+<h1>従業員登録</h1>
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<form method="post" >
+    {% csrf_token %}
+    <p>
+        <label for="empid">ユーザーID:</label>
+        <input type="text" id="empid" name="empid" maxlength="8" required>
+    </p>
+    <p>
+        <label for="emplname">姓:</label>
+        <input type="text" id="emplname" name="emplname" maxlength="64" required>
+    </p>
+    <p>
+        <label for="empfname">名:</label>
+        <input type="text" id="empfname" name="empfname" maxlength="64" required>
+    </p>
+    <p>
+        <label for="emppasswd">パスワード:</label>
+        <input type="password" id="emppasswd" name="emppasswd" maxlength="256" required>
+    </p>
+    <p>
+        <label for="confirmemppasswd">パスワード再入力:</label>
+        <input type="password" id="confirmemppasswd" name="confirmemppasswd" maxlength="256" required>
+    </p>
+    <p>
+        <label for="emprole">役職:</label>
+        <input type="number" id="emprole" name="emprole" placeholder="従業員:1 医師:2" required>
+    </p>
+    <button type="submit">登録</button>
+</form>
+</body>
+</html>

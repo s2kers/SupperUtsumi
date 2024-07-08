@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>患者一覧</title>
+</head>
+<body>
+<h1>患者一覧</h1>
+
+<form method="GET" action="{% url 'patient_kensaku' %}">
+    <input type="text" name="query" value="{{ query|default:'　' }}">
+    <button type="submit">検索</button>
+</form>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<table border="1">
+    <tr>
+        <th>患者ID</th>
+        <th>患者氏名</th>
+        <th>保険証記号番号</th>
+        <th>有効期限</th>
+        <th></th>
+    </tr>
+    {% for patient in patients %}
+        <tr>
+            <td>{{ patient.patid }}</td>
+            <td>{{ patient.patlname }}{{ patient.patfname }}</td>
+            <td>{{ patient.hokenmei }}</td>
+            <td>{{ patient.hokenexp }}</td>
+            <td>
+                <form method="GET" action="{% url 'update_hoken' patient.patid %}">
+                    <button type="submit">保険証情報変更</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

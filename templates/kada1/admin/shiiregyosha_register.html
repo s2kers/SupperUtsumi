@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仕入れ先登録</title>
+</head>
+<body>
+<h1>仕入れ先登録</h1>
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<form method="post" >
+    {% csrf_token %}
+    <p>
+        <label for="shiireid">仕入れ先ID:</label>
+        <input type="text" id="shiireid" name="shiireid" maxlength="8" required>
+    </p>
+    <p>
+        <label for="shiiremei">仕入れ先名:</label>
+        <input type="text" id="shiiremei" name="shiiremei" maxlength="64" required>
+    </p>
+    <p>
+        <label for="shiireaddress">住所:</label>
+        <input type="text" id="shiireaddress" name="shiireaddress" maxlength="64" required>
+    </p>
+    <p>
+        <label for="shiiretel">電話番号:</label>
+        <input type="text" id="shiiretel" name="shiiretel" maxlength="15" required>
+    </p>
+    <p>
+        <label for="shihonkin">資本金:</label>
+        <input type="number" id="shihonkin" name="shihonkin" required>
+    </p>
+    <p>
+        <label for="nouki">納期:</label>
+        <input type="number" id="nouki" name="nouki" required>
+    </p>
+    <button type="submit">登録</button>
+</form>
+</body>
+</html>

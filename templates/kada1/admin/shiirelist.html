@@ -1,0 +1,41 @@
+<!-- shiire_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>仕入れ先一覧</title>
+</head>
+<body>
+<h1>仕入れ先一覧</h1>
+
+<form method="GET" action="{% url 'shiire_list' %}">
+    <input type="text" name="q"  placeholder="住所で検索">
+    <button type="submit">検索</button>
+</form>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<table border="1">
+    <tr>
+        <th>仕入れID</th>
+        <th>仕入れ先名</th>
+        <th>住所</th>
+        <th>電話番号</th>
+        <th>資本金</th>
+        <th>納期</th>
+    </tr>
+    {% for shiire in shiires %}
+        <tr>
+            <td>{{ shiire.shiireid }}</td>
+            <td>{{ shiire.shiiremei }}</td>
+            <td>{{ shiire.shiireaddress }}</td>
+            <td>{{ shiire.shiiretel }}</td>
+            <td>{{ shiire.shihonkin }}</td>
+            <td>{{ shiire.nouki }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

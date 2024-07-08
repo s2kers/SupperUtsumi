@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!DOCTYPE html>
+<head>
+    <title>他病院登録</title>
+</head>
+<body>
+<h1>他病院登録</h1>
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<form method="post" >
+    {% csrf_token %}
+    <p>
+        <label for="tabyouinid">病院ID:</label>
+        <input type="text" id="tabyouinid" name="tabyouinid" maxlength="8" required>
+    </p>
+    <p>
+        <label for="tabyouinmei">病院名:</label>
+        <input type="text" id="tabyouinmei" name="tabyouinmei" maxlength="64" required>
+    </p>
+    <p>
+        <label for="abyouinaddres">住所:</label>
+        <input type="text" id="abyouinaddres" name="abyouinaddres" maxlength="64" required>
+    </p>
+    <p>
+        <label for="tabyouintel">電話番号:</label>
+        <input type="text" id="tabyouintel" name="tabyouintel" maxlength="15" required>
+    </p>
+    <p>
+        <label for="abyouinshihonkin">資本金:</label>
+        <input type="number" id="abyouinshihonkin" name="abyouinshihonkin" required>
+    </p>
+    <p>
+        <label for="kyukyu">救急対応:</label>
+        <input type="number" id="kyukyu" name="kyukyu" placeholder="非救急:0 救急:1" required>
+    </p>
+    <button type="submit">登録</button>
+</form>
+</body>
+</html>

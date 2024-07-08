@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>保険証情報変更</title>
+</head>
+<body>
+<h1>保険証情報変更</h1>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+<form method="POST" action="{% url 'update_hoken' patient.patid %}">
+    {% csrf_token %}
+    <p>保険証情報: {{ patient.hokenmei }} 有効期限: {{ patient.hokenexp }}</p>
+    <div>
+        <label for="new_hokenmei">新しい保険証記号番号:</label>
+        <input type="text" id="new_hokenmei" name="new_hokenmei" maxlength="10">
+    </div>
+    <div>
+        <label for="new_hokenexp">新しい有効期限:</label>
+        <input type="date" id="new_hokenexp" name="new_hokenexp" required>
+    </div>
+    <button type="submit">変更確認</button>
+</form>
+</body>
+</html>

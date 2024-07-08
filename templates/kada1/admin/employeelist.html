@@ -1,0 +1,36 @@
+<!-- templates/update_employee.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>従業員一覧</title>
+</head>
+<body>
+<h1>従業員一覧</h1>
+
+<form method="GET" action="{% url 'employee_kensaku' %}">
+    <input type="text" name="query" placeholder="従業員IDで検索">
+    <button type="submit">検索</button>
+</form>
+
+<table border="1">
+    <tr>
+        <th>従業員ID</th>
+        <th>名前</th>
+        <th></th>
+    </tr>
+    {% for employee in employees %}
+        <tr>
+            <td>{{ employee.empid }}</td>
+            <td>{{ employee.emplname }}{{ employee.empfname }}</td>
+            {% if not employee.emprole == 0 %}
+            <td>
+                <form method="GET" action="{% url 'update_employee' employee.empid %}">
+                    <button type="submit">パスワード変更</button>
+                </form>
+            </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

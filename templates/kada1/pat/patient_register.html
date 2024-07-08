@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!DOCTYPE html>
+<head>
+    <title>患者登録</title>
+</head>
+<body>
+<h1>患者登録</h1>
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<form method="post" >
+    {% csrf_token %}
+    <p>
+        <label for="patid">患者ID:</label>
+        <input type="text" id="patid" name="patid" maxlength="8" required>
+    </p>
+    <p>
+        <label for="patlname">姓:</label>
+        <input type="text" id="patlname" name="patlname" maxlength="64" required>
+    </p>
+    <p>
+        <label for="patfname">名:</label>
+        <input type="text" id="patfname" name="patfname" maxlength="64" required>
+    </p>
+    <p>
+        <label for="hokenmei">保険証記号番号:</label>
+        <input type="text" id="hokenmei" name="hokenmei" maxlength="64" required>
+    </p>
+    <p>
+        <label for="hokenexp">有効期限:</label>
+        <input type="date" id="hokenexp" name="hokenexp"  required>
+    </p>
+    <button type="submit">登録</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者画面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav {
+            margin: 20px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>管理者画面</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url  'register_employee' %}">従業員登録</a></li>
+            <li><a href="{% url 'employee_list' %}">従業員一覧</a></li>
+            <li><a href="{% url 'shiire_list' %}">仕入れ先一覧</a></li>
+            <li><a href="{% url 'shiiregyosha_register' %}">仕入れ先登録</a></li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>
